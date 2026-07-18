@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "@nestjs/axios": "^4.0.1",
+    "axios": "^1.17.0",
+    "form-data": "^4.0.5"
+  }, 
+  "scripts": {
+    "start:all": "concurrently \"cd pfe_frontend && npm run dev\" \"cd backend && npm run start:dev\" \"cd fastapi_microservice && uvicorn main:app --reload\""
+  }
+}
