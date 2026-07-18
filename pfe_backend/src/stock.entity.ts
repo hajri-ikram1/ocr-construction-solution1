@@ -1,6 +1,6 @@
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 
-@Entity('STOCK') // Majuscule pour Oracle
+@Entity('STOCK') 
 export class Stock {
   @PrimaryGeneratedColumn()
   id: number;

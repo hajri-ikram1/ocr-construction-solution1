@@ -56,9 +56,7 @@ export class AppService {
   async devisFromPlan(file: Express.Multer.File) {
     const data = await this.callFastApi('devis-from-plan', file);
 
-    // 🔧 CORRECTION : avant, cette route ne sauvegardait rien en base.
-    // Desormais on cree un enregistrement BROUILLON en Oracle, comme pour les factures,
-    // afin que "valider-devis-plan" puisse ensuite le faire passer a VALIDE.
+
     const estimation = data.estimation_plan || {};
     const saved = await this.devisRepository.save(
       this.devisRepository.create({
@@ -71,8 +69,7 @@ export class AppService {
       })
     );
 
-    // On renvoie au frontend la meme forme qu'avant (estimation_plan)
-    // + l'id Oracle necessaire pour la validation ulterieure.
+
     return {
       ...data,
       estimation_plan: {
@@ -98,9 +95,7 @@ export class AppService {
       );
     }
 
-    // 🔧 CORRECTION : cette methode faisait juste `return { status: "SUCCESS" }`
-    // sans jamais toucher a la base. Desormais on persiste reellement les
-    // eventuelles corrections humaines et on passe le statut a VALIDE.
+
     await this.devisRepository.update(body.id, {
       pieces_detectees: JSON.stringify(body.pieces_detectees || []),
       proposition_devis: JSON.stringify(body.proposition_devis || []),
@@ -146,8 +141,6 @@ export class AppService {
     }
   }
 
-  // 📊 Recupere les statistiques de performance IA (confiance moyenne, temps moyen...)
-  // exposees par le microservice FastAPI (endpoint GET /api/ia/logs)
   async getLogs() {
     try {
       const response = await this.httpService.axiosRef.get(`${this.fastapiUrl}/logs`);

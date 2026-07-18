@@ -1,4 +1,4 @@
-import { Controller, Post, Get, UseInterceptors, UploadedFile, Body } from '@nestjs/common'; // 👈 أضفنا Get هنا
+import { Controller, Post, Get, UseInterceptors, UploadedFile, Body } from '@nestjs/common'; 
 import { FileInterceptor } from '@nestjs/platform-express';
 import { AppService } from './app.service';
 
@@ -39,7 +39,7 @@ export class AppController {
     return await this.appService.validerEtIncrementerStock(body);
   }
 
-  // الـ Endpoint الجديد لجلب الـ logs
+
   @Get('logs')
   async getLogs() {
     return await this.appService.getLogs();

@@ -1,8 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react-router-dom';
 
-import UploadPage from './components/Uploadpage'; // أضفنا مجلد components
-import Dashboard from './components/Dashboard';    // أضفنا مجلد components
+import UploadPage from './components/Uploadpage';
+import Dashboard from './components/Dashboard';    
 
 
 

@@ -1,6 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn } from 'typeorm';
 
-@Entity('DEPENSES') // Majuscule bech Oracle yla6wej perfectly
+@Entity('DEPENSES') 
 export class Depense {
   @PrimaryGeneratedColumn()
   id: number;
@@ -23,7 +23,7 @@ export class Depense {
   @Column({ nullable: true })
   total_ttc: string;
 
-  // Baddelna mel type 'json' l 'clob' khater Oracle DB ma ya6rafsh 'json' direct dakhil TypeORM
+
   @Column({ type: 'simple-json', nullable: true })
 references_produits: any;
 
